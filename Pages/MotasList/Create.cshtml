@@ -1,0 +1,99 @@
+﻿@page
+@model MotasWebRazor.Pages.MotasList.CreateModel
+@{
+}
+<br />
+<h2 class="text-info">Insere nova Mota</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="text-danger"
+             asp-validation-summary="ModelOnly"></div>
+        <!--  Categoria do Mota -->
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Mota.Categoria"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Mota.Categoria"
+                       class="form-control" required />
+            </div>
+            <span asp-validation-for="Mota.Categoria"
+                  class="text-danger"></span>
+        </div><br />
+        <!-- Nome do Mota   -->
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Mota.Nome"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Mota.Nome"
+                       class="form-control" required />
+            </div>
+            <span asp-validation-for="Mota.Nome"
+                  class="text-danger"></span>
+        </div><br />
+        <!-- Valor do Mota -->
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Mota.Valor"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Mota.Valor"
+                       class="form-control" required />
+            </div>
+            <span asp-validation-for="Mota.Valor"
+                  class="text-danger"></span>
+        </div><br />
+        <!--  Cor do Mota -->
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Mota.Cor"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Mota.Cor"
+                       class="form-control" />
+            </div>
+        </div><br />
+        <!-- Cilindrada do Mota   -->
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Mota.Cilindrada"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Mota.Cilindrada"
+                       class="form-control" />
+            </div>
+        </div><br />
+        <!-- Ano do Mota -->
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Mota.Ano"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Mota.Ano"
+                       class="form-control" />
+            </div>
+        </div><br />
+        <!-- Botão de submissão  -->
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit"
+                       value="Adicionar"
+                       class="btn btn-primary form-control" />
+            </div>
+            <!--  Hiperligação para a página da Lista de Motas  -->
+            <div class="col-3">
+                <a asp-page="Index"
+                   class="btn btn-success form-control">
+                    Voltar à lista de Motas
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

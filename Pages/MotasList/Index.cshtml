@@ -1,0 +1,112 @@
+﻿@page
+@model MotasWebRazor.Pages.MotasList.IndexModel
+@{
+}
+<br />
+<div class="container row p-0 m-0">
+    <!-- Contentor Bootstrap -->
+    <!--  Título da Página   -->
+    <div class="col-9">
+        <h2 class="text-info">Motas </h2>
+    </div>
+    <!--  Hiperligação para criar novo registo   -->
+    <div class="col-3">
+        <a asp-page="Create"
+           class="btn btn-info form-control text-white">Adicionar Mota</a>
+    </div>
+
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if (Model.Motas.Count() > 0)  // Razor sign @ -> C# syntax
+            { // Se houverem dados -> apresenta uma tabela
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <!-- Cabeçalho da Tabela -->
+                        <th>
+                            <label asp-for="Motas.FirstOrDefault().Categoria">
+
+                            </label>
+                        </th>
+                        <th>
+                            <label asp-for="Motas.FirstOrDefault().Nome">
+
+                            </label>
+                        </th>
+                        <th>
+                            <label asp-for="Motas.FirstOrDefault().Valor">
+
+                            </label>
+                        </th>
+                        <th>
+                            <label asp-for="Motas.FirstOrDefault().Cor">
+
+                            </label>
+                        </th>
+                         <th>
+                            <label asp-for="Motas.FirstOrDefault().Cilindrada">
+
+                            </label>
+                        </th>
+                        <th>
+                            <label asp-for="Motas.FirstOrDefault().Ano">
+
+                            </label>
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+                    <!-- Dados da Tabela -->
+                    @foreach (var item in Model.Motas)
+                    {
+                        <tr>
+                            <td>
+                                <!-- m => faz o link   -->
+                                @Html.DisplayFor(m => item.Categoria)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Valor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Cor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Cilindrada)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Ano)
+                            </td>
+                            <td>
+                                <!-- Botão de "Delete"      -->
+                                <button asp-page-handler="Delete"
+                                asp-route-id="@item.Id"
+                                onclick="return confirm('Tem a certeza que deseja eliminar?')"
+                                class="btn btn-danger btn-sm text-white">
+                                    Eliminar
+                                </button>
+
+                                <!-- Botão de "Edit"      -->
+                                <a asp-page="Edit"
+                           asp-route-id="@item.Id"
+                           class="btn btn-success btn-sm text-white">Editar</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {  // Se não houverem motas
+                <p> Não existem Motas para mostrar.</p>
+            }
+        </form>
+    </div>
+
+</div>
+@section Scripts{
+    <script src="~/js/bookList.js"></script>
+}
